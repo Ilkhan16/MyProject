@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Business.Abstract;
+﻿using Business.Abstract;
 using DataAccsess.Abstract;
-using DataAccsess.Concrete.InMemory;
 using Entities.Concrete;
 
 namespace Business.Concrete
@@ -22,6 +16,16 @@ namespace Business.Concrete
         public List<Product> GetAll()
         {
             return _productDal.GetAll();
+        }
+
+        public List<Product> GetAllByCategoryId(int categoryId)
+        {
+            return _productDal.GetAll(product => product.CategoryId == categoryId);
+        }
+
+        public List<Product> GetByUnitPrice(decimal min, decimal max)
+        {
+            return _productDal.GetAll(product => product.UnitPrice >= min && product.UnitPrice <= max);
         }
     }
 }

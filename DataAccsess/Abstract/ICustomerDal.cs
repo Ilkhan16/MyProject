@@ -2,7 +2,7 @@
 
 namespace DataAccsess.Abstract
 {
-    public interface IProductDal:IEntityRepository<Product>
+    public interface ICustomerDal : IEntityRepository<Customer>
     {
 
     }

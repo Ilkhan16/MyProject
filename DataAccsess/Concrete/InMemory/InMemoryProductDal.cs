@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 using DataAccsess.Abstract;
 using Entities.Concrete;
 
@@ -27,6 +23,16 @@ namespace DataAccsess.Concrete.InMemory
                 new Product
                     { ProductId = 5, CategoryId = 1, ProductName = "SIAS 2FX Kadın Topuklu Sandalet", UnitPrice = 159 , UnitsInStock = 68 }
             };
+        }
+
+        public List<Product> GetAll(Expression<Func<Product, bool>>? filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public void Add(Product product)
