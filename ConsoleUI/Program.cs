@@ -1,5 +1,4 @@
-﻿using System.Threading.Channels;
-using Business.Concrete;
+﻿using Business.Concrete;
 using DataAccsess.Concrete.EntityFramework;
 
 namespace ConsoleUI;
@@ -8,10 +7,10 @@ class Program
 {
     static void Main()
     {
-        //NewMethod();
+        NewMethod();
         //NewMethod1();
     }
-
+    
 
 
 
@@ -41,11 +40,9 @@ class Program
     {
         ProductManager productManager = new ProductManager(new EfProductDal());
 
-        foreach (var ppp in productManager.GetAllByCategoryId(2))
+        foreach (var ppp in productManager.GetProductDetails())
         {
-            Console.WriteLine("**********************");
-            Console.WriteLine(ppp.ProductName);
-            Console.WriteLine(ppp.CategoryId);
+            Console.WriteLine(ppp.ProductName+" *** "+ppp.CategoryName);
         }
     }
 }
