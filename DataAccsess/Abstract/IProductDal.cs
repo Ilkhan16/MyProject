@@ -1,9 +1,9 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;
+using Entities.Concrete;
 
-namespace DataAccsess.Abstract
+namespace DataAccsess.Abstract;
+
+public interface IProductDal:IEntityRepository<Product>
 {
-    public interface IProductDal:IEntityRepository<Product>
-    {
 
-    }
 }

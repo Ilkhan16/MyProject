@@ -1,8 +1,8 @@
-﻿using Entities.Concrete;
+﻿using Core.DataAccess;
+using Entities.Concrete;
 
-namespace DataAccsess.Abstract
+namespace DataAccsess.Abstract;
+
+public interface ICategoryDal:IEntityRepository<Category>
 {
-    public interface ICategoryDal:IEntityRepository<Category>
-    {
-    }
 }

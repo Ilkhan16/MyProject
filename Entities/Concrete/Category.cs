@@ -1,10 +1,14 @@
-﻿using Entities.Abstract;
+﻿using System.Collections;
+using Core.Entities;
 
-namespace Entities.Concrete
+namespace Entities.Concrete;
+
+public class Category:IEntity, IEnumerable
 {
-    public class Category:IEntity
+    public int CategoryId { get; set; }
+    public string CategoryName { get; set; }
+    public IEnumerator GetEnumerator()
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        throw new NotImplementedException();
     }
 }
