@@ -20,7 +20,7 @@ class Program
 
 
 
-
+ 
 
     private static void NewMethod1()
     {
@@ -39,10 +39,19 @@ class Program
     private static void NewMethod()
     {
         ProductManager productManager = new ProductManager(new EfProductDal());
+        
+        var result = productManager.GetProductDetails();
 
-        foreach (var ppp in productManager.GetProductDetails())
+        if (result.Success)
         {
-            Console.WriteLine(ppp.ProductName+" *** "+ppp.CategoryName);
+            foreach (var ppp in productManager.GetProductDetails().Data)
+            {
+                Console.WriteLine(ppp.ProductName + " *** " + ppp.CategoryName);
+            }
+        }
+        else
+        {
+            Console.WriteLine(result.Message);
         }
     }
 }
