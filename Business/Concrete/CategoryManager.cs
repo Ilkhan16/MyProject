@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
 using DataAccsess.Abstract;
 using Entities.Concrete;
+using System.Collections.Generic;
+using Core.Utilites.Results.Abstract;
+using Core.Utilites.Results.Concrete;
 
 namespace Business.Concrete
 {
@@ -13,14 +16,16 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
         }
 
-        public List<Category> GetAll()
+        public IDataResult<List<Category>> GetAll()
         {
-            return _categoryDal.GetAll();
+            //İş kodları
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());
         }
 
-        public Category GetByCategoryId(int categoryId)
+        //Select * from Categories where CategoryId = 3
+        public IDataResult<Category> GetById(int categoryId)
         {
-            return _categoryDal.Get(c => c.CategoryId == categoryId);
+            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == categoryId));
         }
     }
 }

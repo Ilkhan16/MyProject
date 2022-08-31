@@ -8,9 +8,8 @@ namespace Core.Utilites.Results.Concrete
 {
     public class SuccessDataResult<T>:DataResult<T>
     {
-        public SuccessDataResult(T data, bool success, string message) : base(data, true, message)
+        public SuccessDataResult(T data, string message) : base(data, true, message)
         {
-
         }
 
         public SuccessDataResult(T data) : base(data, true)
@@ -18,7 +17,7 @@ namespace Core.Utilites.Results.Concrete
 
         }
 
-        public SuccessDataResult(T getAll, string message):base(default,true,message)
+        public SuccessDataResult(string message):base(default,true,message)
         {
             
         }
