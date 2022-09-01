@@ -1,10 +1,16 @@
-﻿using Business.Abstract;
+﻿using System.ComponentModel.DataAnnotations;
+using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.AutoFac.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Utilites.Results.Abstract;
 using Core.Utilites.Results.Concrete;
 using DataAccsess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace Business.Concrete;
 
@@ -48,13 +54,11 @@ public class ProductManager:IProductService
     {
         return new SuccessDataResult<Product>( _productDal.Get(p => p.ProductId == productId),Messages.ProductsListed);
     }
-    public IResult Add(Product product) 
-    {
-        if (product.ProductName.Length < 2)
-        {
-            return new ErrorResult(Messages.ProductNameInvalid);
-        }
 
+    [ValidationAspect(typeof(ProductValidator))]
+    public IResult Add(Product product)
+    {
+        ValidationTool.Validate(new ProductValidator(), product);
         _productDal.Add(product);
         return new SuccessResult(Messages.ProductAdded);
     }

@@ -7,6 +7,7 @@ class Program
 {
     static void Main()
     {
+
         NewMethod();
         //NewMethod1();
     }
@@ -24,10 +25,11 @@ class Program
 
     private static void NewMethod1()
     {
+
         CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-        Console.WriteLine(categoryManager.GetByCategoryId(5));
+        Console.WriteLine(categoryManager.GetById(5));
         Console.WriteLine("**************************");
-        foreach (var cccc in categoryManager.GetAll())
+        foreach (var cccc in categoryManager.GetAll().Data)
         {
             Console.WriteLine("{0} {1}", cccc.CategoryId, "****** " + cccc.CategoryName);
         }

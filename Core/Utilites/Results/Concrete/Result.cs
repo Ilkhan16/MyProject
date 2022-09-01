@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Utilites.Results.Abstract;
+﻿using Core.Utilites.Results.Abstract;
 
-namespace Core.Utilites.Results.Concrete
+namespace Core.Utilites.Results.Concrete;
+
+public class Result : IResult
 {
-    public class Result : IResult
+
+    public Result(bool success, string message) : this(success)
     {
-
-        public Result(bool success, string message) : this(success)
-        {
-            Message=message;
-        }
-
-        public Result(bool success)
-        {
-            Success = success;
-        }
-
-        public bool Success { get; }
-        public string Message { get; }
+        Message=message;
     }
+
+    public Result(bool success)
+    {
+        Success = success;
+    }
+
+    public bool Success { get; }
+    public string Message { get; }
 }
