@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
+using Business.CCS.Abstract;
+using Business.CCS.Concrete;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
@@ -9,7 +11,7 @@ using DataAccsess.Concrete.EntityFramework;
 
 namespace Business.DependensyResolvers.AutoFac;
 
-public class AuotFacBusinessModule:Module
+public class AutoFacBusinessModule:Module
 {
     protected override void Load(ContainerBuilder builder)
     {

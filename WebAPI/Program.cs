@@ -4,7 +4,7 @@ using Business.DependensyResolvers.AutoFac;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).
-    ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AuotFacBusinessModule()); });
+    ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutoFacBusinessModule()); });
 
 // Add services to the container.
 builder.Services.AddControllers();

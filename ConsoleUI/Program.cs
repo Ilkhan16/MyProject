@@ -8,7 +8,7 @@ class Program
     static void Main()
     {
 
-        NewMethod();
+        //NewMethod();
         //NewMethod1();
     }
     
@@ -38,22 +38,22 @@ class Program
     }
 
 
-    private static void NewMethod()
-    {
-        ProductManager productManager = new ProductManager(new EfProductDal());
-        
-        var result = productManager.GetProductDetails();
+    //private static void NewMethod()
+    //{
+    //    ProductManager productManager = new ProductManager(new EfProductDal());
 
-        if (result.Success)
-        {
-            foreach (var ppp in productManager.GetProductDetails().Data)
-            {
-                Console.WriteLine(ppp.ProductName + " *** " + ppp.CategoryName);
-            }
-        }
-        else
-        {
-            Console.WriteLine(result.Message);
-        }
-    }
+    //    var result = productManager.GetProductDetails();
+
+    //    if (result.Success)
+    //    {
+    //        foreach (var ppp in productManager.GetProductDetails().Data)
+    //        {
+    //            Console.WriteLine(ppp.ProductName + " *** " + ppp.CategoryName);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine(result.Message);
+    //    }
+    //}
 }
