@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.CCS.Abstract
+namespace Business.CCS.Abstract;
+
+public interface ILogger
 {
-    public interface ILogger
-    {
-        void Log();
-    }
+    void Log();
 }

@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.CCS.Abstract;
 
-namespace Business.CCS.Concrete
+namespace Business.CCS.Concrete;
+
+public class FileLogger:ILogger
 {
-    public class FileLogger:ILogger
+    public void Log()
     {
-        public void Log()
-        {
-            Console.WriteLine("Files Logged");
-        }
+        Console.WriteLine("Files Logged");
     }
 }

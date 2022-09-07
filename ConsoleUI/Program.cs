@@ -32,7 +32,7 @@ class Program
         foreach (var cccc in categoryManager.GetAll().Data)
         {
             Console.WriteLine("{0} {1}", cccc.CategoryId, "****** " + cccc.CategoryName);
-        }
+        }   
 
         Console.ReadLine();
     }

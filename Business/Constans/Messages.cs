@@ -1,11 +1,21 @@
-﻿namespace Business.Constans;
+﻿using System.Runtime.Serialization;
+using Core.Entities.Concrete;
+
+namespace Business.Constans;
 
 public static class Messages
 {
-    public static string ProductAdded = "Product added.";
-    public static string ProductNameInvalid = "Product name is invalid";
-    public static string MaintenanceTime = "Maintenance Time!";
-    public static string ProductsListed = "Products Listed.";
-    public static string ProductCountOfCategoryError = "10'dan fazla";
-    public static string ProductNameAlreadyExists = "Ürün ismi kayıtlı lütfen başka ürün giriniz";
+    public static string ProductAdded = "Ürün eklendi.";
+    public static string ProductNameInvalid = "Ürün ismi geçersiz";
+    public static string MaintenanceTime = "Bakım Zamanı!";
+    public static string ProductsListed = "Ürünler listelendi.";
+    public static string ProductCountOfCategoryError = "Bir kategoride 10'dan fazla ürün olamaz";
+    public static string ProductNameAlreadyExists = "Ürün ismi kayıtlı lütfen başka isim giriniz";
+    public static string AuthorizationDenied="Yetkiniz yok!";
+    public static string UserRegistered = "Hesap oluşturuldu";
+    public static string UserNotFound = "Kullanıcı bulunamadı";
+    public static string PasswordError = "Şifreniz Yanlış";
+    public static string SuccessfulLogin = "Giriş yapıldı";
+    public static string UserAlreadyExists = "Kullanıcı kayıtlı";
+    public static string AccessTokenCreated = "Token oluşturuldu";
 }

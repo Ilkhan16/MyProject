@@ -1,13 +1,41 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependensyResolvers.AutoFac;
+using Core.Utilites.Security.Encryption;
+using Core.Utilities.Security.Jwt; 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory()).
-    ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutoFacBusinessModule()); });
 
-// Add services to the container.
 builder.Services.AddControllers();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = tokenOptions.Issuer,
+            ValidAudience = tokenOptions.Audience,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+
+        };
+
+    });
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+    builder.RegisterModule(new AutofacBusinessModule());
+});
 
 
 // Learn more aboutconfiguring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
