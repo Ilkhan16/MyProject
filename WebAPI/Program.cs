@@ -1,6 +1,8 @@
 using Autofac;
+using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Business.DependensyResolvers.AutoFac;
+using Core.Utilites.IoC;
 using Core.Utilites.Security.Encryption;
 using Core.Utilities.Security.Jwt; 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,7 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+var services = builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+ServiceTool.Create(services);
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
